@@ -1,0 +1,16 @@
+# Python files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Local settings
+.claude/
+.idea/
+.vscode/
+
+# Outputs
+work_orders_enriched_final.xlsx
+
+# OS files
+.DS_Store
+Thumbs.db
