@@ -50,30 +50,36 @@ def main():
         print(f"Total work orders: {len(prop_df):,}")
         
         # 1. Yearly trends (Long term)
-        prop_df['Year'] = prop_df['call_date'].dt.year
+        prop_df['Year'] = prop_df['call_date'].dt.year.astype('Int64')
         # Group and drop NaNs
         yearly = prop_df.groupby('Year').size().rename('Work Orders')
         print("\n--- Long Term Trends (By Year) ---")
         print(yearly.to_string())
         
-        # 2. Monthly trends (Seasonal)
-        prop_df['Month_Num'] = prop_df['call_date'].dt.month
-        monthly = prop_df.groupby('Month_Num').size().rename('Work Orders')
-        
-        # Map month numbers to names
+        # Helper for calendar months
         month_names = {
             1: 'January', 2: 'February', 3: 'March', 4: 'April',
             5: 'May', 6: 'June', 7: 'July', 8: 'August',
             9: 'September', 10: 'October', 11: 'November', 12: 'December'
         }
-        monthly.index = monthly.index.map(month_names)
         
-        # Sort by month number (not alphabetically)
-        # Reindexing to guarantee correct chronological calendar order
+        # 2. Monthly trends (Overall Seasonal)
+        prop_df['Month_Num'] = prop_df['call_date'].dt.month
+        monthly = prop_df.groupby('Month_Num').size().rename('Work Orders')
+        monthly.index = monthly.index.map(month_names)
         monthly = monthly.reindex(list(month_names.values())).dropna().astype(int)
         
-        print("\n--- Seasonal Trends (By Month) ---")
+        print("\n--- Seasonal Trends (All Years Combined) ---")
         print(monthly.to_string())
+        
+        # 3. Monthly trends for 2025 (2025 Seasonal)
+        df_2025 = prop_df[prop_df['Year'] == 2025].copy()
+        monthly_2025 = df_2025.groupby('Month_Num').size().rename('Work Orders')
+        monthly_2025.index = monthly_2025.index.map(month_names)
+        monthly_2025 = monthly_2025.reindex(list(month_names.values())).dropna().astype(int)
+        
+        print("\n--- Seasonal Trends (2025 Only) ---")
+        print(monthly_2025.to_string())
         print()
 
 if __name__ == "__main__":
