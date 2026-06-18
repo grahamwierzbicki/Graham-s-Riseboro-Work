@@ -22,10 +22,10 @@ import pandas as pd
 
 from anchors import ANCHOR_MAP, ADDRESS_ONLY_RE, TIER1_ANCHORS
 
-BASE_DIR  = os.path.dirname(os.path.abspath(__file__))
-EXCEL_DIR = os.path.join(BASE_DIR, "Riseboro Excel Files")
+BASE_DIR  = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+EXCEL_DIR = os.path.join(BASE_DIR, "data", "raw")
 
-OUTPUT_EXCEL = os.path.join(BASE_DIR, "work_orders_enriched_final.xlsx")
+OUTPUT_EXCEL = os.path.join(BASE_DIR, "data", "processed", "work_orders_enriched_final.xlsx")
 
 STANDARD_COLS = [
     "wo_number", "prop_unit", "status", "category", "brief_desc",

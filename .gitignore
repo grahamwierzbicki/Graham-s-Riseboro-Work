@@ -8,8 +8,9 @@ __pycache__/
 .idea/
 .vscode/
 
-# Outputs
-work_orders_enriched_final.xlsx
+# Data and Outputs
+data/raw/
+data/processed/
 
 # OS files
 .DS_Store
