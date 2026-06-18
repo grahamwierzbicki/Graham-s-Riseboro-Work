@@ -47,7 +47,17 @@ def main():
             print(f"No records found for property code '{prop_code}'")
             continue
             
-        print(f"Total work orders: {len(prop_df):,}")
+        print(f"Total records in dataset: {len(prop_df):,}")
+        
+        # Data Quality Checks
+        missing_dates = prop_df['call_date'].isna().sum()
+        print(f"Records with missing/invalid call_date: {missing_dates:,} ({missing_dates/len(prop_df)*100:.1f}%)")
+        
+        if 'status' in prop_df.columns:
+            print("\nWork Order Status Breakdown:")
+            status_counts = prop_df['status'].value_counts(dropna=False)
+            for status, count in status_counts.items():
+                print(f"  - {status}: {count:,} ({count/len(prop_df)*100:.1f}%)")
         
         # 1. Yearly trends (Long term)
         prop_df['Year'] = prop_df['call_date'].dt.year.astype('Int64')
