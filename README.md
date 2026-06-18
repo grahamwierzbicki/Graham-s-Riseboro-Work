@@ -9,6 +9,29 @@ This repository contains data analysis, ETL pipelines, and scripts to support th
 
 ---
 
+## Datasets & APIs
+We leverage a combination of NYC Open Data APIs and internal Yardi property management records.
+
+### 1. NYC Open Data
+* **311**: General complaints dataset (used to match with our portfolio addresses).
+* **DOB (Dept. of Buildings)**: Multi-unit failures data (specifically Boilers & Elevators).
+  * *Note on duplicates:* Inspect and resolve potentially duplicate/overlapping records between:
+    * Boiler Compliance Records
+    * Orders to Repair/Vacate
+    * Disciplinary Actions
+* **HPD (Housing Preservation & Development)**: 
+  * Code violations
+  * Code complaints
+  * Fees generated from violations
+* **PLUTO (Planning Database)**: Broad geographic, zoning, and tax lot information.
+* **Congressional Shapefiles**: Spatial boundary files used for mapping.
+
+### 2. Yardi (Internal Data)
+* **Portfolios**: Split into 2 main property portfolios.
+* **Metrics**: 6 main metrics are evaluated, with 30% of the data sourced from Yardi exports.
+
+---
+
 ## Repository Structure
 ```
 ├── data/
