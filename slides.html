@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riseboro Data Analysis - Week 2 Trends</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #fafafa;
+            color: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .presentation-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .slide {
+            display: none;
+            width: 90%;
+            max-width: 1100px;
+            height: 85%;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid #eaeaea;
+            padding: 40px;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            position: absolute;
+            transition: opacity 0.3s ease;
+        }
+        .slide.active {
+            display: flex;
+            animation: fadeIn 0.4s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .slide-header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eaeaea;
+            padding-bottom: 15px;
+        }
+        .slide-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #4b5563;
+        }
+        .slide-number {
+            font-size: 14px;
+            color: #9ca3af;
+        }
+        .slide-content {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-height: 60%;
+            margin: 20px 0;
+        }
+        .slide-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+        .slide-footer {
+            width: 100%;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-top: 1px solid #eaeaea;
+            padding-top: 20px;
+        }
+        .slide-description {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #374151;
+            text-align: center;
+            max-width: 800px;
+        }
+        /* Title Slide specific styles */
+        .title-slide {
+            justify-content: center;
+            text-align: center;
+        }
+        .title-slide h1 {
+            font-size: 44px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 15px;
+        }
+        .title-slide p {
+            font-size: 18px;
+            color: #6b7280;
+            margin-bottom: 30px;
+        }
+        .title-slide .badge {
+            display: inline-block;
+            background-color: #f3f4f6;
+            color: #4b5563;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        /* Navigation Controls */
+        .controls {
+            position: absolute;
+            bottom: 3%;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            z-index: 10;
+        }
+        .btn {
+            background-color: #ffffff;
+            border: 1px solid #d1d5db;
+            color: #374151;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            transition: all 0.2s;
+        }
+        .btn:hover {
+            background-color: #f9fafb;
+            border-color: #9ca3af;
+        }
+        .keyboard-hint {
+            font-size: 12px;
+            color: #9ca3af;
+        }
+    </style>
+</head>
+<body>
+
+<div class="presentation-container">
+    <!-- Slide 1: Title Slide -->
+    <div class="slide active title-slide">
+        <div>
+            <div class="badge">Riseboro Data Analysis</div>
+            <h1 style="margin-top: 15px;">Work Order Trend Analysis</h1>
+            <p>Week 2 Report: Seasonal and Long-Term Trends</p>
+            <div style="font-size: 14px; color: #9ca3af;">Use Left/Right arrow keys or the buttons below to navigate</div>
+        </div>
+    </div>
+
+    <!-- Slide 2: Gates Plaza Seasonal -->
+    <div class="slide">
+        <div class="slide-header">
+            <span class="slide-title">Gates Plaza — Seasonal Trends</span>
+            <span class="slide-number">Slide 2 / 5</span>
+        </div>
+        <div class="slide-content">
+            <img class="slide-image" src="data/processed/charts/gates_plaza_seasonal_trends.png" alt="Gates Plaza Seasonal Trends">
+        </div>
+        <div class="slide-footer">
+            <p class="slide-description">Honestly I have no idea what to conclude here. Double check why May is so high?</p>
+        </div>
+    </div>
+
+    <!-- Slide 3: Gates Plaza Yearly -->
+    <div class="slide">
+        <div class="slide-header">
+            <span class="slide-title">Gates Plaza — Yearly Trend</span>
+            <span class="slide-number">Slide 3 / 5</span>
+        </div>
+        <div class="slide-content">
+            <img class="slide-image" src="data/processed/charts/gates_plaza_yearly_trend.png" alt="Gates Plaza Yearly Trend">
+        </div>
+        <div class="slide-footer">
+            <p class="slide-description">Spike in work orders around 2026, average has decreased to around 120 orders per year, since 2017.</p>
+        </div>
+    </div>
+
+    <!-- Slide 4: Rheingold Seasonal -->
+    <div class="slide">
+        <div class="slide-header">
+            <span class="slide-title">Rheingold — Seasonal Trends</span>
+            <span class="slide-number">Slide 4 / 5</span>
+        </div>
+        <div class="slide-content">
+            <img class="slide-image" src="data/processed/charts/rheingold_gardens_seasonal_trends.png" alt="Rheingold Seasonal Trends">
+        </div>
+        <div class="slide-footer">
+            <p class="slide-description">Work orders are consistently dispersed across months, with a statistically significant trend of work orders being higher in April.</p>
+        </div>
+    </div>
+
+    <!-- Slide 5: Rheingold Yearly -->
+    <div class="slide">
+        <div class="slide-header">
+            <span class="slide-title">Rheingold — Yearly Trend</span>
+            <span class="slide-number">Slide 5 / 5</span>
+        </div>
+        <div class="slide-content">
+            <img class="slide-image" src="data/processed/charts/rheingold_gardens_yearly_trend.png" alt="Rheingold Yearly Trend">
+        </div>
+        <div class="slide-footer">
+            <p class="slide-description">Meaningful trend upwards in work orders, each year. Opposite of Gates Plaza.</p>
+        </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+        <button class="btn" id="prevBtn">Previous</button>
+        <span class="keyboard-hint">Use <strong>&larr;</strong> / <strong>&rarr;</strong> keys</span>
+        <button class="btn" id="nextBtn">Next</button>
+    </div>
+</div>
+
+<script>
+    const slides = document.querySelectorAll('.slide');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    let currentSlide = 0;
+
+    function showSlide(index) {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (index + slides.length) % slides.length;
+        slides[currentSlide].classList.add('active');
+    }
+
+    prevBtn.addEventListener('click', () => showSlide(currentSlide - 1));
+    nextBtn.addEventListener('click', () => showSlide(currentSlide + 1));
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            showSlide(currentSlide - 1);
+        } else if (e.key === 'ArrowRight') {
+            showSlide(currentSlide + 1);
+        }
+    });
+</script>
+</body>
+</html>
